@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="Accounts List">
+        <lightning-layout>
+            <lightning-layout-item style="margin-left: 130px;" size="4">
+                <lightning-input type="text" label="Filter By Name" onchange={handleFilterChangeName}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item style="margin-left: auto; margin-right: 130px;" size="4">
+                <lightning-input type="text" label="Filter By ASAIDPRS" onchange={handleFilterChangeAsa}></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout>
+            <lightning-layout-item style="margin-left: 130px;" size="4">
+                <lightning-input type="text" label="Filter By BIL ID" onchange={handleFilterChangeBil}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item style="margin-left: auto; margin-right: 130px;" size="4">
+                <lightning-input type="text" label="Filter By RC" onchange={handleFilterChangeRc}></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout>
+            <lightning-layout-item style="margin-left: 130px;" size="4">
+                <lightning-input type="text" label="Filter By ICE" onchange={handleFilterChangeIce}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item style="margin-left: auto; margin-right: 130px;" size="4">
+                <lightning-input type="text" label="Filter By Record Type" onchange={handleFilterChangeRecordtype}></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout>
+            <lightning-layout-item style="margin-top: 30px;" size="12">
+                <lightning-datatable
+                    data={filteredAccounts}
+                    columns={columns}
+                    key-field="Id">
+                </lightning-datatable>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div class="slds-align_absolute-center" style="height:5rem">
+            <lightning-button disabled={pageDisableFirst} icon-name="utility:jump_to_left" label="First" class="slds-p-horizontal_x-small" alternative-text="first page" onclick={firstPage}></lightning-button>
+            <lightning-button disabled={pageDisableFirst} icon-name="utility:chevronleft" label="Previous" alternative-text="Previous" onclick={previousPage}></lightning-button>
+            &nbsp;
+            <span class="slds-badge">Showing {pageNumber} &nbsp;of&nbsp; {totalPages} &nbsp;&nbsp;Page(s)</span>
+            &nbsp;
+            <lightning-button disabled={pageDisableLast} icon-name="utility:chevronright" label="Next" alternative-text="Next" onclick={nextPage} class="slds-p-horizontal_x-small" icon-position="right"></lightning-button>
+            <lightning-button disabled={pageDisableLast} icon-name="utility:jump_to_right" label="Last" alternative-text="last page" onclick={lastPage} icon-position="right"></lightning-button>
+        </div>
+    </lightning-card>
+</template>
